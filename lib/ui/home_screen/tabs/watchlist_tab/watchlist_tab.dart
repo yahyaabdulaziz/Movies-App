@@ -16,7 +16,7 @@ class WatchlistTab extends StatelessWidget {
           Container(
               margin: EdgeInsets.only(top: 40, bottom: 18, left: 12, right: 12),
               child: Text(
-                "Browse Category",
+                "Watch List",
                 style: GoogleFonts.inter(
                     fontWeight: FontWeight.w600,
                     color: Colors.white,

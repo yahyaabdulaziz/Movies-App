@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movie/model/recommended_response.dart';
 import 'package:movie/utilities/app_assets.dart';
 import 'package:movie/utilities/app_color.dart';
+import 'package:movie/utilities/constants.dart';
 
 class FullCardWidget extends StatelessWidget {
-  const FullCardWidget({super.key});
+  final Results results;
+
+  const FullCardWidget({super.key, required this.results});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +17,8 @@ class FullCardWidget extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            Image.asset(
-              AppAssets.splash,
+            Image.network(
+              "${Constants.imagePath}${results.posterPath}",
               fit: BoxFit.cover,
               width: double.infinity,
             ),
@@ -49,7 +53,7 @@ class FullCardWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "7.7",
+                    results.voteAverage.toString(),
                     style: GoogleFonts.poppins(
                         fontSize: 10,
                         fontWeight: FontWeight.normal,
@@ -58,13 +62,13 @@ class FullCardWidget extends StatelessWidget {
                 ],
               ),
               Text(
-                "Twilight 2",
+                results.title ?? "",
                 style: GoogleFonts.poppins(
                     fontSize: 10,
                     fontWeight: FontWeight.normal,
                     color: Colors.white),
               ),
-              Text("2012 R 1h 50m",
+              Text(results.releaseDate ?? "",
                   style: GoogleFonts.inter(
                       fontSize: 8,
                       fontWeight: FontWeight.normal,

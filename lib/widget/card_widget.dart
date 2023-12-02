@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:movie/model/newrelease_response.dart';
 import 'package:movie/utilities/app_assets.dart';
+import 'package:movie/utilities/constants.dart';
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({super.key});
+  final Results results;
+
+  const CardWidget({super.key, required this.results});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Image.asset(
-          AppAssets.splash,
+        Image.network(
+          "${Constants.imagePath}${results.posterPath}",
           fit: BoxFit.cover,
           width: double.infinity,
         ),

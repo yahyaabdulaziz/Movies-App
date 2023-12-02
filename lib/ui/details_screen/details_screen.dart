@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movie/model/recommended_response.dart';
+import 'package:movie/model/similar_response.dart';
 import 'package:movie/utilities/app_assets.dart';
 import 'package:movie/utilities/app_color.dart';
-import 'package:movie/widget/card_widget.dart';
 import 'package:movie/widget/data_card_widget.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -58,7 +59,11 @@ class DetailsScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .30,
               child: Row(
                 children: [
-                  Expanded(flex: 3, child: CardWidget()),
+                  Expanded(
+                      flex: 3,
+                      child: Container(
+                        color: AppColor.selectColor,
+                      )),
                   Expanded(
                     flex: 7,
                     child: Column(
@@ -73,7 +78,7 @@ class DetailsScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.white),
                                   color: Colors.black87,
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(8)),
                               child: Text("data",
                                   style: GoogleFonts.inter(
                                       fontSize: 10,
@@ -86,7 +91,7 @@ class DetailsScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.white),
                                   color: Colors.black87,
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(8)),
                               child: Text("data",
                                   style: GoogleFonts.inter(
                                       fontSize: 10,
@@ -99,7 +104,7 @@ class DetailsScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.white),
                                   color: Colors.black87,
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(8)),
                               child: Text("data",
                                   style: GoogleFonts.inter(
                                       fontSize: 10,
@@ -156,17 +161,7 @@ class DetailsScreen extends StatelessWidget {
                               fontSize: 15),
                         )),
                     Expanded(
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 8,
-                          itemBuilder: (context, index) {
-                            return Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .50,
-                                width: MediaQuery.of(context).size.height * .12,
-                                margin: EdgeInsets.all(6),
-                                child: FullCardWidget());
-                          }),
+                      child: buildSimilarMovies(),
                     ),
                   ]),
             ),
@@ -174,5 +169,20 @@ class DetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  buildSimilarMovies() {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 12,
+        itemBuilder: (context, index) {
+          return Container(
+              height: MediaQuery.of(context).size.height * .50,
+              width: MediaQuery.of(context).size.height * .12,
+              margin: EdgeInsets.all(6),
+              child: Container(
+                color: AppColor.selectColor,
+              ));
+        });
   }
 }
